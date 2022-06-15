@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "lib": [
+      "esnext"
+    ],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "esnext",
+    "moduleResolution": "Node",
+  },
+  "include": [
+    // "class/*",
+    // "config/*",
+     "controller/*",
+    // "data-models/*",
+    "routes/*",
+    "main.ts",
+    // "models.ts",
+    // "database/connection.ts"
+    ]
+  
+}
