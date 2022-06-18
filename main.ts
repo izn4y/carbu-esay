@@ -1,7 +1,7 @@
-import express, { Application } from 'express';
-import {DataProvider} from './class/provider/DataProvider'
+import express, { Application } from "express";
+import indexRouter from "./services/index";
 
-const app :Application = express();
+const app: Application = express();
 const port: number = 3000;
 
 /**
@@ -14,19 +14,16 @@ app.use(express.urlencoded({ extended: false }));
 /**
  * @Router configuration
  */
-let dataProvider = new DataProvider()
-dataProvider.loadDataXml()
+app.use("/", indexRouter);
+
 app.use((req, res, next) => {
-  res.status(404).json({Error:`Not found ${req.url}`});
+  res.status(404).json({ Error: `Not found ${req.url}` });
 });
-
-
 
 /**
  * @Run configuration
  */
 
-    app.listen(port, () => {
-      console.log(`Server started on port http://localhost:${port}`);
-    });
-
+app.listen(port, () => {
+  console.log(`Server started on port http://localhost:${port}`);
+});
