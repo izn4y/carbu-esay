@@ -16,7 +16,7 @@ export class DataProvider {
   static readonly ENCODING: string = "iso-8859-1";
   
   private station: StationDto;
-  private totalGasStation: object[];
+  private totalGasStation: StationDto[];
 
   constructor() {
     this.station = new StationDto(null, null, null, null, null, null, null);
@@ -48,17 +48,17 @@ export class DataProvider {
    * @memberof DataProvider
    */
 
-  public async loadDataXml(pCity:string): Promise<Array <object> > {
+  public async loadDataXml(pCity:string): Promise<StationDto[] | null> {
     await this.loadDataDecode().then((result: string) => {
       xml2js.parseString(result, (err, result: any) => {
         
         if (err) console.log(err);
-        this.totalGasStation = new Array<object>();
+        this.totalGasStation = new Array<StationDto>();
         result.pdv_liste.pdv.forEach((element: any) => {
           this.station = new StationDto(null,null,null,null,null, null,null);
           
           if (element.ville == pCity || element.ville == pCity.toUpperCase()) {
-
+  
             this.station.address = element.adresse.toString();
             this.station.locationId = element["$"].id;
             this.station.latitude = element["$"].latitude;
@@ -75,10 +75,9 @@ export class DataProvider {
             this.totalGasStation.push(this.station);
           }
         });
-        // console.log(this.totalGasStation);
-        // console.log(`${this.totalGasStation.length} stations trouvées`);
       });
     });
+    if(!this.totalGasStation.length){return null}
     return this.totalGasStation;
   }
 
