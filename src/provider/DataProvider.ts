@@ -3,14 +3,13 @@ import xml2js from "xml2js";
 import { StationDto } from "../dto/StationDto";
 import iconv from "iconv-lite";
 
+
 /**
+ *
  *
  * @export
  * @class DataProvider
- * @Dto {StationDto}
- * 
  */
-
 export class DataProvider {
 
   static readonly XML_PATH: string = "./PrixCarburants_instantane.xml";
@@ -18,11 +17,6 @@ export class DataProvider {
   
   private station: StationDto;
   private totalGasStation: object[];
-
-  /**
-   * Creates an instance of DataProvider.
-   * @memberof DataProvider
-   */
 
   constructor() {
     this.station = new StationDto(null, null, null, null, null, null, null);
@@ -81,8 +75,8 @@ export class DataProvider {
             this.totalGasStation.push(this.station);
           }
         });
-        console.log(this.totalGasStation);
-        console.log(`${this.totalGasStation.length} stations trouvées`);
+        // console.log(this.totalGasStation);
+        // console.log(`${this.totalGasStation.length} stations trouvées`);
       });
     });
     return this.totalGasStation;
