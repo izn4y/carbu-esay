@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ts-node-dev main.ts",
     "test": "jest",
-    "build": "tsc -p ."
+    "build": "tsc"
   },
   "repository": "https://github.com/izn4y/carbu-esay.git",
   "author": "Euphrosine Devon <n4yor93@hotmail.fr>",

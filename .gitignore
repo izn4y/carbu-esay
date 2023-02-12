@@ -1,5 +1,5 @@
 .DS_Store
-PrixCarburants_instantane.xml
-dist/
+build/
 node_modules/
 yarn-error.log
+PrixCarburants_instantane.xml
